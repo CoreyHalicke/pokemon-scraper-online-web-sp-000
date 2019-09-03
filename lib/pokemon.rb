@@ -27,13 +27,10 @@ class Pokemon
     SQL
 
     db.execute(sql, id).map do |row|
-      new_id = row[0]
-      name = row[1]
-      type = row[2]
       new_pokemon = self.new(db)
-      new_pokemon.id = new_id
-      new_pokemon.name = name
-      new_pokemon.type = type
+      new_pokemon.id = row[0]
+      new_pokemon.name = row[1]
+      new_pokemon.type = row[2]
       new_pokemon
     end.first
   end
